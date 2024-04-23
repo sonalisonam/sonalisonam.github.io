@@ -1,40 +1,20 @@
-// Assuming you have data about cluster status and build durations
-const clusterStatus = "good"; // "good", "bad", or "issue"
-const buildDurations = [
-  { date: "2024-04-20", duration: 120 },
-  { date: "2024-04-21", duration: 90 },
-  { date: "2024-04-22", duration: 110 },
-  // Add more data as needed
-];
+document.getElementById("inputForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent default form submission
 
-// Function to update cluster status display
-function updateStatus() {
-  const statusElement = document.getElementById("status");
-  let statusText = "";
-  switch (clusterStatus) {
-    case "good":
-      statusText = "<span style='color: green;'>Cluster Status: Good</span>";
-      break;
-    case "bad":
-      statusText = "<span style='color: red;'>Cluster Status: Bad</span>";
-      break;
-    case "issue":
-      statusText = "<span style='color: yellow;'>Cluster Status: Issue</span>";
-      break;
-    default:
-      statusText = "Unknown status";
-  }
-  statusElement.innerHTML = statusText;
-}
+  // Get input values
+  const clusterStatus = document.getElementById("clusterStatus").value;
+  const date = document.getElementById("date").value;
+  const duration = parseInt(document.getElementById("duration").value);
 
-// Function to draw the graph
-function drawGraph() {
-  const graphElement = document.getElementById("graph");
-  // Code to draw the graph using buildDurations data
-}
+  // Do something with the input data (you can send it to a server or store it locally)
 
-// Call the functions to update status and draw graph when the page loads
-window.onload = function() {
-  updateStatus();
-  drawGraph();
-};
+  // For demonstration purposes, let's just log the data to console
+  console.log("Cluster Status:", clusterStatus);
+  console.log("Date:", date);
+  console.log("Duration:", duration);
+
+  // Clear form fields after submission (optional)
+  document.getElementById("clusterStatus").value = "good"; // Reset dropdown
+  document.getElementById("date").value = ""; // Clear date input
+  document.getElementById("duration").value = ""; // Clear duration input
+});
